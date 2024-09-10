@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- タイトル部分をセンタリングし、スタイリッシュに -->
+    <div class="text-center">
+        <h2 class="mb-4 p-3 bg-secondary text-white rounded shadow">{{ title }}</h2>
+    </div>
+
+    <!-- 戻るボタンを目立たせる -->
+    <div class="mb-4 text-center">
+        <a href="{% url 'game:MembersListView' %}" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> 一覧に戻る
+        </a>
+    </div>
+
+    <!-- テーブルのデザインを改善し、レスポンシブ対応 -->
+    <div class="card shadow-sm p-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ object.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>名前</th>
+                        <td>{{ object.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>性別</th>
+                        <td>{{ object.get_gender_display }}</td>
+                    </tr>
+                    <tr>
+                        <th>誕生日</th>
+                        <td>{{ object.birthday }}</td>
+                    </tr>
+                    <tr>
+                        <th>入所日</th>
+                        <td>{{ object.enter_day|date:"Y年m月d日" }}</td> <!-- 日本語表記 -->
+                    </tr>
+                    <tr>
+                        <th>退所日</th>
+                        <td>{{ object.exit_day|date:"Y年m月d日" }}</td> <!-- 日本語表記 -->
+                    </tr>
+                    <tr>
+                        <th>修練会区分</th>
+                        <td>{{ object.get_training_display }}</td>
+                    </tr>
+                    <tr>
+                        <th>延泊、前泊日数</th>
+                        <td>{{ exit_day }}</td>
+                    </tr>
+                    <tr>
+                        <th>参加費の納付</th>
+                        <td>{{ object.get_participation_cost_submit_or_not_display }}</td> <!-- 'obj' を 'object' に修正 -->
+                    </tr>
+                    <tr>
+                        <th>記入日</th>
+                        <td>{{ object.input_day|date:"Y年m月d日" }}</td> <!-- 日本語表記 -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

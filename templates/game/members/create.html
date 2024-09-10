@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- タイトル部分を中央寄せし、さらにスタイリッシュに -->
+    <div class="text-center">
+        <h2 class="mb-4 p-3 bg-secondary text-white rounded shadow">{{ title }}</h2>
+    </div>
+
+    <!-- メッセージ表示エリアを洗練 -->
+    {% if message %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+
+    <!-- 戻るボタンのスタイル変更 -->
+    <div class="mb-4 text-center">
+        <a href="{% url 'game:MembersListView' %}" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> 一覧表に戻る
+        </a>
+    </div>
+
+    <!-- フォームスタイルの調整 -->
+    <div class="card shadow-sm p-4">
+        <form action="{% url 'game:Members_create' %}" method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg">
+                    <i class="bi bi-check-circle"></i> 送信
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- 修正: '<h2>' タグにタイポがあったので修正 -->
+    <h2 class="mb-4 bg-secondary text-white" style="text-align: center;">{{ title }}</h2>
+    
+    <!-- メッセージの表示 -->
+    <!--<div class="alert alert-danger" role="alert">-->
+    <!--    {{ message }}-->
+    <!--</div>-->
+
+    <!-- 一覧に戻るボタン -->
+    <div class="mb-3">
+        <a href="{% url 'game:MembersListView' %}" class="btn btn-primary">一覧表に戻る</a>
+    </div>
+    
+    <!-- フォームの修正: 'nobalidate' -> 'novalidate' -->
+    <form action="{% url 'game:Members_update' object.id %}" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+</div> <!-- 修正: 閉じタグが 'din' ではなく 'div' -->
+{% endblock %}
