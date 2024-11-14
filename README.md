@@ -21,6 +21,28 @@
 6. 名前検索機能
 
 7. 管理者画面
+
+8. バリデーション機能
+
+---
+
+<img src="images/base.png" width="500px">
+
+---
+
+<img src="images/input.png" width="500px">
+
+---
+
+<img src="images/detail.png" width="500px">
+
+---
+
+<img src="images/admin.png" width="500px">
+
+---
+
+
 ### 作り終わって
 原島
 djangoの機能を勉強するとてもいい機会になりました。chatGPTが質問に対する回答以上の素晴らしい案を出してくれて、便利さを実感しました。これからはchatGPTを使用した質の高いコードを書きたいです。
